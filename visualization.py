@@ -19,3 +19,6 @@ def plot_map(data , geo_data):
     fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
     
     return fig
+
+
+    
