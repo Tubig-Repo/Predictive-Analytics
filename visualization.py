@@ -6,7 +6,7 @@ def plot_map(data , geo_data):
     # Create the choropleth map
     fig = px.choropleth_mapbox(data, 
                             geojson=geo_data, 
-                            locations='region', 
+                            locations='location', 
                             featureidkey="properties.name",  # Adjust based on your GeoJSON structure
                             color='values', 
                             color_continuous_scale="Viridis",
