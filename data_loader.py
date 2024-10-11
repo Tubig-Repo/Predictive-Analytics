@@ -71,6 +71,7 @@ def load_luzon_province(selected_year):
     provinces[selected_year] = provinces[selected_year].str.replace(',', '').astype(float)
     # Remove parentheses on names 
     provinces['Name'] = provinces['Name'].apply(lambda x: re.sub(r'\s*\(.*?\)\s*', '', x).strip())
+    
     return provinces
 # def load_luzon_province(selected_province): 
 #     # Acuqire the data
@@ -86,10 +87,17 @@ def load_luzon_province(selected_year):
 #     df = pd.DataFrame(provinces)
 #     return df
 
+def load_grdp(selected_year): 
+    
+    grdp = pd.read_csv('Macroeconomics Dataset/GRDP.csv')
 
+    grdp.rename(columns={"Unnamed: 0": "Region Name"}, inplace=True)
 
+    data = {'location': grdp['Region Name'].tolist(), "values": grdp[selected_year].tolist()}
+    
+    return data
 
-
+    
     
     
     
