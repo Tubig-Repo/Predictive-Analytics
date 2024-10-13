@@ -44,19 +44,19 @@ def plot_bar(data, selected_year):
             hovertemplate="%{x}",
             name=selected_year,
             orientation="h",
+            marker=dict(colorscale='Viridis', 
+                )
         )
     )
-    
     fig.update_layout(
-        paper_bgcolor="#bcbcbc",
         plot_bgcolor="#f9e5e5",
+        title=f"{selected_year} Data By Region",
+        xaxis_title="GRDP",
+        yaxis_title="Region",
         width=900,
-        height=600,
-        title=f"{selected_year} Data by Region",
-        xaxis_title="Value",
-        yaxis_title="Region"
+        height=600
     )
-
+    
     # Display the chart
     return fig
 
