@@ -3,8 +3,16 @@ import json
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
+# Acccessing outside directory
+import sys
+import os
+sys.path.append(os.path.abspath(".."))
+
 import data_loader
 import visualization
+
+
+
 st.set_page_config(layout="wide")
 
 ###  Start of Mapping 
