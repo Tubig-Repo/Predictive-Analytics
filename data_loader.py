@@ -2,6 +2,7 @@ import json
 import streamlit as st
 import pandas as pd
 import re
+
 # Will handle the philippines geographic data structure
 def load_geojson(option_level):
         if option_level == 'Region':
@@ -87,17 +88,26 @@ def load_luzon_province(selected_year):
 #     df = pd.DataFrame(provinces)
 #     return df
 
-def load_grdp(selected_year): 
+def load_grdp_plain(): 
     
-    grdp = pd.read_csv('Macroeconomics Dataset/GRDP.csv')
+    grdp = pd.read_csv('Macroeconomics Dataset/GRDP-2000.csv')
 
     grdp.rename(columns={"Unnamed: 0": "Region Name"}, inplace=True)
 
-    data = {'location': grdp['Region Name'].tolist(), "values": grdp[selected_year].tolist()}
+    return grdp
+
+
+def load_grdp(selected_year): 
+    
+    df = load_grdp_plain()
+
+    data = {'location': df['Region Name'].tolist(), "values": df[selected_year].tolist()}
     
     return data
 
     
+def load_GRDP_length():
     
+    data = load_grdp_plain()
     
-    
+    return data.columns.drop('Region Name').tolist()
